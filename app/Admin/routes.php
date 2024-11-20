@@ -15,5 +15,6 @@ Route::group([
 
     /* user added code  */
     $router->resource('jobs', JobController::class);
+    $router->resource('users', UserController::class);
 
 });
