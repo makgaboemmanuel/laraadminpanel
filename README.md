@@ -1,61 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+the script in discussion will be accessed via a REST API endpoint, in this project this is the endpoint below:
+- http://127.0.0.1:8085/api/runBackgroundJob
+- the endpoint performs the POST operation passing the data to the script via the controller of the Laravel Application 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+The System requirements:
+    Postman
+    VS Studio Code
+    PHP 7.4
+    Composer version 2.0.11 2021-02-24 14:57:23
+    Xampp 
 
-## About Laravel
+Please run the commands below in sequence
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+composer create-project laravel/laravel laraadminpanel 8.0 
+php artisan server --port=8085
+php artisan migrate:fresh
+open-admin.org/docs/en/installation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+composer require open-admin-org/open-admin
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+php artisan vendor:publish --provider="OpenAdmin\Admin\AdminServiceProvider"
 
-## Learning Laravel
+php artisan admin:install
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+open the following website from the browser:  https://open-admin.org/docs/en/quick-start
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Run the commands below as well in sequence
 
-## Laravel Sponsors
+composer require open-admin-ext/helpers
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+php artisan admin:import helpers
 
-### Premium Partners
+php artisan admin:import helpers
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+To log into the Admin Panel, open the following endpoint: 
+    http://your-host/admin/ in browser,use username admin and password admin to login
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+php artisan make:controller JobExecuteController
+    create the class: Job and add the methods: 
+        saveFile
+        downloadFiles 
+        uploadFiles
+        getter methods for all the private fields as well as the contructor
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# please change the directory name throught the variable: log_directory
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+create the Repo on Git Cloud
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+git init
+
+git remote add origin https://github.com/makgaboemmanuel/laraadminpanel.git
+
+git switch --create main 
+
+git add .
+
+git push --set-upstream origin main
+
+git push -u origin main
+
+Please amend the variabe: $log_directory inside the file: code_solution/Job.php to point to your local destination      
+
+Best case scenarion would be screenshare and present the solution
