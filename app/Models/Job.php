@@ -10,4 +10,8 @@ class Job extends Model
     use SoftDeletes;
 
     protected $table = 'job';
+    protected $fillable = [
+        'name', 'log', 'retrycount', 'status', 'error'
+    ];
+
 }

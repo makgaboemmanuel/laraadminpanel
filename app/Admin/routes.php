@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 
+
 Admin::routes();
 
 Route::group([
@@ -18,3 +19,5 @@ Route::group([
     $router->resource('users', UserController::class);
 
 });
+
+
